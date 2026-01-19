@@ -1,0 +1,78 @@
+# -------------------------------------------
+# Fluid 主题配置文件 (SAIER 修正版)
+# -------------------------------------------
+
+# 导航栏设置
+navbar:
+  blog_title: SAIER's Tech Blog
+  menu:
+    - { key: 'home', link: '/', icon: 'iconfont icon-home-fill' }
+    - { key: 'archive', link: '/archives/', icon: 'iconfont icon-archive-fill' }
+    - { key: 'category', link: '/categories/', icon: 'iconfont icon-category-fill' }
+    - { key: 'tag', link: '/tags/', icon: 'iconfont icon-tags-fill' }
+    - { key: 'about', link: '/about/', icon: 'iconfont icon-user-fill' }
+    - { key: 'links', link: '/links/', icon: 'iconfont icon-link-fill' }
+
+# 首页大图设置
+index:
+  slogan: "Code is Poetry." 
+  text_typewriter: true      
+  post_urlname: false        
+
+# 文章页设置
+post:
+  meta:
+    date: { enable: true, format: "YYYY-MM-DD" }
+    wordcount: { enable: true }
+    min2read: { enable: true }
+    views: { enable: true, source: "busuanzi" }
+  
+  # 代码块设置
+  code:
+    copy_btn: true           
+    highlightjs:
+      enable: false          
+    prismjs:
+      enable: true           
+      preprocess: true       
+      line_number: true      
+
+  # 数学公式
+  math:
+    enable: true
+    specific: false
+    engine: katex            
+
+# 搜索设置
+local_search:
+  enable: true
+  path: /search.xml
+  field: post
+  content: true
+
+# 页脚设置
+footer:
+  content: '<span>&copy; 2026 SAIER</span>' # 注意年份已更新
+  statistics:
+    enable: true
+    source: "busuanzi"
+    pv_label: "总访问量: "
+    uv_label: "总访客数: "
+
+# 评论系统配置
+comments:
+  enable: true
+  type: giscus
+
+# Giscus 具体参数 (在这里填入你从 giscus.app 获取的值)
+giscus:
+  repo: "SAIER1234/SAIER1234.github.io"     # 例如: SAIER1234/my-blog-comments
+  repo_id: "R_kgDOQ8LgMQ"
+  category: "Announcements"
+  category_id: "DIC_kwDOQ8LgMc4C1JQs"
+  mapping: "pathname"
+  reactions_enabled: "1"
+  emit_metadata: "0"
+  input_position: "top"
+  theme: "light"
+  lang: "zh-CN"
