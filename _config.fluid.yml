@@ -16,7 +16,7 @@ navbar:
 # 首页大图设置
 index:
   slogan: "Code is Poetry." 
-  text_typewriter: true      
+  text_typewriter: false   
   post_urlname: false        
 
 # 文章页设置
