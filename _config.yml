@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: SAIER's Blog
-subtitle: ''
-description: ''
+title: SAIER's Tech Blog  # 这里决定浏览器标签页显示的文字
+subtitle: "Code is Poetry."
+description: '这是我的博客，试试看'
 keywords:
 author: SAIER
 language: zh-CN

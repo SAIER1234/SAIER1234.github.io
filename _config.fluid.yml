@@ -17,7 +17,8 @@ navbar:
 index:
   slogan: "Code is Poetry." 
   text_typewriter: false   
-  post_urlname: false        
+  post_urlname: false  
+  banner_img: /img/banner.jpg      
 
 # 文章页设置
 post:
@@ -26,6 +27,9 @@ post:
     wordcount: { enable: true }
     min2read: { enable: true }
     views: { enable: true, source: "busuanzi" }
+  comments: 
+    enable: true
+    type: giscus
   
   # 代码块设置
   code:
