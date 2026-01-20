@@ -8,7 +8,7 @@
     <link href="/shell/MIT-Missing-Semester/shell/MIT-Missing-Semester/1-shell%E5%88%9D%E8%AE%A4%E8%AF%86/"/>
     <url>/shell/MIT-Missing-Semester/shell/MIT-Missing-Semester/1-shell%E5%88%9D%E8%AE%A4%E8%AF%86/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-shell是什么？"><a href="#1-shell是什么？" class="headerlink" title="1.shell是什么？"></a>1.shell是什么？</h1><p>如今的计算机有着多种多样的交互接口让我们可以进行指令的输入，从炫酷的图像用户界面（GUI），语音输入甚至是 AR&#x2F;VR 都已经无处不在。 这些交互接口可以覆盖 80% 的使用场景，但是它们也从根本上限制了您的操作方式——你不能点击一个不存在的按钮或者是用语音输入一个还没有被录入的指令。 为了充分利用计算机的能力，我们不得不回到最根本的方式，使用文字接口：Shell</p><h1 id="2-使用shell"><a href="#2-使用shell" class="headerlink" title="2.使用shell"></a>2.使用shell</h1><p><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120111614.png" alt="20260120111614"></p><ul><li>25435@saier MINGW64是主机名字</li><li>~是位置home</li><li>$ 表非root</li></ul><h2 id="2-1简单命令"><a href="#2-1简单命令" class="headerlink" title="2.1简单命令"></a>2.1简单命令</h2><ul><li>date :输出日期</li><li>echo xxx : 打印<br>注意shell的空格，参数要有空格可单引号或\转移符号</li></ul><h2 id="2-1-shell寻路原理"><a href="#2-1-shell寻路原理" class="headerlink" title="2.1 shell寻路原理"></a>2.1 shell寻路原理</h2><p>1.执行echo,先去$PATH找，找到就执行。<br>2.也可以用which,找到路径，然后直接用路径执行。<br><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120112606.png" alt="20260120112606"></p><h2 id="2-2-导航"><a href="#2-2-导航" class="headerlink" title="2.2 导航"></a>2.2 导航</h2><ol><li>用&#x2F;分割，windows则是\ .</li><li>若某路径以&#x2F;开头：绝对路径，否则相对路径</li><li><code>pwd</code>: 获取当前工作目录。</li><li><code>cd</code> : . :当前目录  ..:上级目录</li><li><code>ls</code>: 查看目录底下的文件</li><li>介绍标记和选项： 他们以 <code>-</code>开头 ，执行程序可用<code>-h</code> or<code>--help</code> 打印帮助信息。</li><li><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120130120.png" alt="20260120130120">d表示这是Users的一个目录。接下来9字符3个一组，分布代表文件所有者(Users),用户组，其他所有人，只有文件所有者可以改（有<code>w</code>）,其他只能读<code>r</code>  与<code>x</code>执行。</li><li><code>mv</code>: 重命名或移动文件</li><li><code>cp</code>: 拷贝文件</li><li><code>mkdir</code> : 新建文件夹</li><li>使用<code>man</code> + 程序名，会展现用户手册，按q可退出</li></ol><h2 id="2-3-程序间创建链接"><a href="#2-3-程序间创建链接" class="headerlink" title="2.3 程序间创建链接"></a>2.3 程序间创建链接</h2><p>正常来说键盘为输入，显示器为输出，但可重定向输入输出流。</p><ul><li><p>使用<code>&lt;和&gt;</code><br><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120114653.png" alt="20260120114653"></p></li><li><p>使用管道（pipes） 与<code>|</code>:将前一个程序输出和后一个程序输入连接</p></li></ul><h2 id="2-4-强大工具"><a href="#2-4-强大工具" class="headerlink" title="2.4 强大工具"></a>2.4 强大工具</h2><p><code>sudo</code></p><p>我们一般不以根用户登录，root users权限最强，怕搞破坏，所以需要时可以使用<code>sudo</code>命令。（super user do）<br> <code>tee</code> : 规范标准输入输出流<br> <code>echo 3 | sudo tee brightness</code> :正确。<br> <code>sudo echo 3 | brightness</code>:错误，每个符号都是通过shell执行而不是程序单独执行，brightness打不开，无权限,而且brightness是文件而不是程序，前面要加上tee </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-shell是什么？"><a href="#1-shell是什么？" class="headerlink" title="1.shell是什么？"></a>1.shell是什么？</h1><p>如今的计算机有着多种多样的交互接口让我们可以进行指令的输入，从炫酷的图像用户界面（GUI），语音输入甚至是 AR&#x2F;VR 都已经无处不在。 这些交互接口可以覆盖 80% 的使用场景，但是它们也从根本上限制了您的操作方式——你不能点击一个不存在的按钮或者是用语音输入一个还没有被录入的指令。 为了充分利用计算机的能力，我们不得不回到最根本的方式，使用文字接口：Shell</p><h1 id="2-使用shell"><a href="#2-使用shell" class="headerlink" title="2.使用shell"></a>2.使用shell</h1><p><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120111614.png" alt="20260120111614"></p><ul><li>25435@saier MINGW64是主机名字</li><li>~是位置home</li><li>$ 表非root</li></ul><h2 id="2-1简单命令"><a href="#2-1简单命令" class="headerlink" title="2.1简单命令"></a>2.1简单命令</h2><ul><li>date :输出日期</li><li>echo xxx : 打印<br>注意shell的空格，参数要有空格可单引号或\转移符号</li></ul><h2 id="2-1-shell寻路原理"><a href="#2-1-shell寻路原理" class="headerlink" title="2.1 shell寻路原理"></a>2.1 shell寻路原理</h2><p>1.执行echo,先去$PATH找，找到就执行。<br>2.也可以用which,找到路径，然后直接用路径执行。<br><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120112606.png" alt="20260120112606"></p><h2 id="2-2-导航"><a href="#2-2-导航" class="headerlink" title="2.2 导航"></a>2.2 导航</h2><ol><li>用&#x2F;分割，windows则是\ .</li><li>若某路径以&#x2F;开头：绝对路径，否则相对路径</li><li><code>pwd</code>: 获取当前工作目录。</li><li><code>cd</code> : . :当前目录  ..:上级目录</li><li><code>ls</code>: 查看目录底下的文件</li><li>介绍标记和选项： 他们以 <code>-</code>开头 ，执行程序可用<code>-h</code> or<code>--help</code> 打印帮助信息。</li><li><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120130120.png" alt="20260120130120">d表示这是Users的一个目录。接下来9字符3个一组，分布代表文件所有者(Users),用户组，其他所有人，只有文件所有者可以改（有<code>w</code>）,其他只能读<code>r</code>  与<code>x</code>执行。</li><li><code>mv</code>: 重命名或移动文件</li><li><code>cp</code>: 拷贝文件</li><li><code>mkdir</code> : 新建文件夹</li><li>使用<code>man</code> + 程序名，会展现用户手册，按q可退出</li></ol><h2 id="2-3-程序间创建链接"><a href="#2-3-程序间创建链接" class="headerlink" title="2.3 程序间创建链接"></a>2.3 程序间创建链接</h2><p>正常来说键盘为输入，显示器为输出，但可重定向输入输出流。</p><ul><li><p>使用<code>&lt;和&gt;</code><br><img src="https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120114653.png" alt="20260120114653"></p></li><li><p>使用管道（pipes） 与<code>|</code>:将前一个程序输出和后一个程序输入连接</p></li></ul><h2 id="2-4-强大工具"><a href="#2-4-强大工具" class="headerlink" title="2.4 强大工具"></a>2.4 强大工具</h2><p><code>sudo</code></p><p>我们一般不以根用户登录，root users权限最强，怕搞破坏，所以需要时可以使用<code>sudo</code>命令。（super user do）<br> <code>tee</code> : 规范标准输入输出流<br> <code>echo 3 | sudo tee brightness</code> :正确。<br> <code>sudo echo 3 | brightness</code>:错误，每个符号都是通过shell执行而不是程序单独执行，brightness打不开，无权限,而且brightness是文件而不是程序，前面要加上tee .</p>]]></content>
     
     
     <categories>
@@ -59,17 +59,17 @@
   
   <entry>
     <title>0.课程简介</title>
-    <link href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-eecs498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-EECS498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-UMich-EECS498-0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/"/>
-    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-eecs498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-EECS498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-UMich-EECS498-0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/</url>
+    <link href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/"/>
+    <url>/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-课程链接"><a href="#1-课程链接" class="headerlink" title="1.课程链接"></a>1.课程链接</h1><p>因为听说好上手，而且能够更加熟练使用pycharm,具体咋样我上上看再评价。 &lt;网站&gt;(<a href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/</a>)</p><p>&lt;课程视频&gt;(<a href="https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r">https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r</a>)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-课程链接"><a href="#1-课程链接" class="headerlink" title="1.课程链接"></a>1.课程链接</h1><p>&lt;网站&gt;(<a href="https://15445.courses.cs.cmu.edu/spring2023/schedule.html">https://15445.courses.cs.cmu.edu/spring2023/schedule.html</a>)</p>]]></content>
     
     
     <categories>
       
-      <category>机器学习</category>
+      <category>数据库系统</category>
       
-      <category>UMich-eecs498</category>
+      <category>CMU-15-445</category>
       
     </categories>
     
@@ -86,17 +86,17 @@
   
   <entry>
     <title>0.课程简介</title>
-    <link href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/"/>
-    <url>/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/CMU-15-445/0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/</url>
+    <link href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-eecs498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-EECS498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-UMich-EECS498-0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/"/>
+    <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-eecs498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/UMich-EECS498/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-UMich-EECS498-0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-课程链接"><a href="#1-课程链接" class="headerlink" title="1.课程链接"></a>1.课程链接</h1><p>&lt;网站&gt;(<a href="https://15445.courses.cs.cmu.edu/spring2023/schedule.html">https://15445.courses.cs.cmu.edu/spring2023/schedule.html</a>)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-课程链接"><a href="#1-课程链接" class="headerlink" title="1.课程链接"></a>1.课程链接</h1><p>因为听说好上手，而且能够更加熟练使用pycharm,具体咋样我上上看再评价。 &lt;网站&gt;(<a href="https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/">https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/</a>)</p><p>&lt;课程视频&gt;(<a href="https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r">https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r</a>)</p>]]></content>
     
     
     <categories>
       
-      <category>数据库系统</category>
+      <category>机器学习</category>
       
-      <category>CMU-15-445</category>
+      <category>UMich-eecs498</category>
       
     </categories>
     
