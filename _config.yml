@@ -101,4 +101,6 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:SAIER1234/SAIER1234.github.io.git
+  branch: main
