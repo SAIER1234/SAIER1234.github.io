@@ -1,5 +1,5 @@
 ---
-title: 0.shell介绍
+title: 1.shell初认识
 date: 2026-01-19 19:05:21
 tags: [CS学习]
 categories: [shell,MIT-Missing-Semester]
@@ -56,4 +56,3 @@ excerpt:
  `echo 3 | sudo tee brightness` :正确。
  `sudo echo 3 | brightness`:错误，每个符号都是通过shell执行而不是程序单独执行，brightness打不开，无权限,而且brightness是文件而不是程序，前面要加上tee 
 
- 
