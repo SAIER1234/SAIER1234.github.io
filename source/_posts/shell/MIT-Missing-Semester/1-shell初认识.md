@@ -1,6 +1,6 @@
 ---
 title: 1.shell初认识
-date: 2026-01-19 19:05:21
+date: 2026-01-20T12:52:27+08:00
 tags: [CS学习]
 categories: [shell,MIT-Missing-Semester]
 excerpt: 
