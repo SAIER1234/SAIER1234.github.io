@@ -3,7 +3,7 @@ title: 1.shell初认识
 date: 2026-01-20T12:52:27+08:00
 tags: [CS学习]
 categories: [shell,MIT-Missing-Semester]
-excerpt: 
+excerpt: shell入门
 ---
 
 # 1.shell是什么？
@@ -34,7 +34,7 @@ excerpt:
 4. `cd` : . :当前目录  ..:上级目录
 5. `ls`: 查看目录底下的文件
 6. 介绍标记和选项： 他们以 `-`开头 ，执行程序可用`-h` or`--help` 打印帮助信息。
-7. ![alt text](image.png) d表示这是Users的一个目录。接下来9字符3个一组，分布代表文件所有者(Users),用户组，其他所有人，只有文件所有者可以改（有`w`）,其他只能读`r`  与`x`执行。
+7. ![20260120130120](https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120130120.png)d表示这是Users的一个目录。接下来9字符3个一组，分布代表文件所有者(Users),用户组，其他所有人，只有文件所有者可以改（有`w`）,其他只能读`r`  与`x`执行。
 8. `mv`: 重命名或移动文件
 9. `cp`: 拷贝文件
 10. `mkdir` : 新建文件夹
