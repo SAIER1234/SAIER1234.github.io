@@ -39,6 +39,8 @@ excerpt: shell入门
 9. `cp`: 拷贝文件
 10. `mkdir` : 新建文件夹
 11. 使用`man` + 程序名，会展现用户手册，按q可退出
+12. `cat` : 用于读取，创建，合并，和显示文件内容
+创建： cat > 文件名 之后按ctrl +d退出
 
 ## 2.3 程序间创建链接
 正常来说键盘为输入，显示器为输出，但可重定向输入输出流。
@@ -46,6 +48,7 @@ excerpt: shell入门
 - 使用`<和>`
 ![20260120114653](https://cdn.jsdelivr.net/gh/SAIER1234/blog-images/img/20260120114653.png)
 
+注意：`<`是覆盖重定向，`<<`是追加重定向
 - 使用管道（pipes） 与`|`:将前一个程序输出和后一个程序输入连接
 
 ## 2.4 强大工具
@@ -54,5 +57,9 @@ excerpt: shell入门
 我们一般不以根用户登录，root users权限最强，怕搞破坏，所以需要时可以使用`sudo`命令。（super user do）
  `tee` : 规范标准输入输出流
  `echo 3 | sudo tee brightness` :正确。
- `sudo echo 3 | brightness`:错误，每个符号都是通过shell执行而不是程序单独执行，brightness打不开，无权限,而且brightness是文件而不是程序，前面要加上tee 
+ `sudo echo 3 | brightness`:错误，每个符号都是通过shell执行而不是程序单独执行，brightness打不开，无权限,而且brightness是文件而不是程序，前面要加上tee .
+
+ 使用`.\路径` 执行某文件。
+
+ `chmod`: 
 
