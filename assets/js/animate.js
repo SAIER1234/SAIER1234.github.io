@@ -1,20 +1,9 @@
-// animate.js — Scroll-triggered fade-in-up animations
-(function () {
-  const elements = document.querySelectorAll('.fade-in-up');
-  if (!elements.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -40px 0px',
-    threshold: 0.1,
-  });
-
-  elements.forEach(el => observer.observe(el));
+// animate.js — Scroll-triggered fade-up
+(function(){
+  const els=document.querySelectorAll('.fade-up');
+  if(!els.length)return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{rootMargin:'0px 0px -30px 0px',threshold:.08});
+  els.forEach(el=>obs.observe(el));
 })();

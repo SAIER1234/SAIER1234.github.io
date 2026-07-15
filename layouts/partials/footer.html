@@ -1,7 +1,8 @@
-<!-- footer.html -->
 <footer class="site-footer">
-  <p>{{ i18n "footer_text" | default "Designed & Built by SAIER" }}</p>
-  <p style="margin-top:0.5rem;font-size:0.75rem;">
-    <a href="mailto:{{ .Site.Params.email }}" style="color:var(--text-muted);">{{ .Site.Params.email }}</a>
+  <p>© 2026 {{ .Site.Data.site.name }} · {{ i18n "footer_text" | default "Designed & Built by SAIER" }}</p>
+  <p>
+    <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+    &nbsp;·&nbsp;
+    <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
   </p>
 </footer>

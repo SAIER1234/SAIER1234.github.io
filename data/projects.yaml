@@ -62,12 +62,24 @@ projects:
 
   - id: "tinyproxy"
     title: "TinyProxy"
-    title_zh: "TinyProxy — 简易HTTP代理"
+    title_zh: "TinyProxy — 简易HTTP代理服务器"
     description: "A lightweight HTTP forward proxy server with LRU caching and concurrent connection handling."
     description_zh: "一个轻量级HTTP正向代理服务器，支持LRU缓存和并发连接处理。"
     tech: ["C", "socket", "pthread", "HTTP"]
     github: "https://github.com/SAIER1234/tinyproxy"
     demo: ""
     status: "planning"
-    course: "CS168S (Optional)"
-    featured: false
+    course: "CS168S"
+    featured: true
+
+  - id: "minios"
+    title: "MiniOS"
+    title_zh: "MiniOS — xv6操作系统扩展"
+    description: "Extended the xv6 teaching OS with new system calls, copy-on-write fork, and priority scheduling."
+    description_zh: "基于xv6教学操作系统的扩展：新增系统调用、写时复制fork、进程优先级调度。"
+    tech: ["C", "xv6", "RISC-V", "OS"]
+    github: "https://github.com/SAIER1234/minios"
+    demo: ""
+    status: "planning"
+    course: "MIT 6.S083"
+    featured: true

@@ -1,0 +1,18 @@
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="{{ "" | relLangURL }}" class="header-logo">{{ .Site.Data.site.name }}</a>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+    <nav class="header-nav" id="header-nav">
+      <a href="#about" data-section="about">{{ i18n "about" }}</a>
+      <a href="#projects" data-section="projects">{{ i18n "projects" }}</a>
+      <a href="#courses" data-section="courses">{{ i18n "courses" }}</a>
+      <a href="#blog" data-section="blog">{{ i18n "blog" }}</a>
+      <a href="#resume" data-section="resume">{{ i18n "resume" }}</a>
+      <a href="#contact" data-section="contact">{{ i18n "contact" }}</a>
+    </nav>
+  </div>
+</header>

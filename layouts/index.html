@@ -1,262 +1,230 @@
 {{ define "main" }}
 
-<!-- ========== Hero Section ========== -->
-<section class="content-section" id="hero" style="min-height:100vh;">
-  <div class="fade-in-up">
-    <p class="hero-greeting">{{ i18n "greeting" }}</p>
-    <h1 class="hero-name">{{ .Site.Data.site.name }}</h1>
-    <h2 class="hero-tagline">{{ i18n "tagline" }}</h2>
-    <p class="hero-description">{{ i18n "hero_desc" }}</p>
-    <a href="#projects" class="btn-accent">{{ i18n "cta" }}</a>
-  </div>
-</section>
-
-<!-- ========== 01. About Section ========== -->
-<section class="content-section" id="about">
-  <div class="fade-in-up">
-    <h2 class="section-heading">
-      <span class="section-number">01.</span>
-      {{ i18n "about_title" }}
-    </h2>
-  </div>
-
-  <div class="about-grid">
-    <div class="fade-in-up">
-      {{ $aboutKey := printf "about_text" }}
-      {{ $aboutText := i18n $aboutKey | default .Site.Data.site.bio_short }}
-      {{ range split $aboutText "\n\n" }}
-        <p>{{ . }}</p>
-      {{ end }}
-
-      <div class="skill-tags">
-        {{ range .Site.Data.skills.skills }}
-        <span class="skill-tag">{{ .name }}</span>
+<!-- ========== Hero ========== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="fade-up">
+      <div class="hero-badge">
+        📍 45-Day Summer Sprint · Zhejiang University
+      </div>
+      <h1 class="hero-title">{{ .Site.Data.site.name }}</h1>
+      <p class="hero-subtitle">
+        {{ if eq .Site.Language.Lang "zh" }}
+        浙江大学大二学生，正在用45天系统学习计算机科学核心课程。<br>
+        从零构建系统、数据库、AI 应用 —— 一步一个脚印。
+        {{ else }}
+        A sophomore at Zhejiang University, spending 45 days systematically mastering
+        core computer science — building systems, databases, and AI from scratch.
         {{ end }}
+      </p>
+      <p class="hero-subtitle-en">
+        {{ if eq .Site.Language.Lang "zh" }}
+        Building Systems · Databases · AI — From Scratch, One Step at a Time.
+        {{ else }}
+        从零构建系统、数据库、AI 应用 — 一步一个脚印。
+        {{ end }}
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">{{ i18n "cta" }}</a>
+        <a href="#courses" class="btn btn-outline">
+          {{ if eq .Site.Language.Lang "zh" }}查看学习计划{{ else }}View Learning Plan{{ end }}
+        </a>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="about-image-wrapper fade-in-up">
-      <div class="about-image-border"></div>
-      <img src="{{ "images/avatar.svg" | relURL }}" alt="SAIER" class="about-image">
+<!-- ========== Progress Tracker ========== -->
+<section style="background:var(--bg-secondary);padding:3rem 0;">
+  <div class="container">
+    <div class="progress-section fade-up">
+      <div class="progress-stats">
+        <div class="progress-stat">
+          <div class="progress-stat-value">0/45</div>
+          <div class="progress-stat-label">{{ if eq .Site.Language.Lang "zh" }}已过天数{{ else }}Days Passed{{ end }}</div>
+        </div>
+        <div class="progress-stat">
+          <div class="progress-stat-value">0/8</div>
+          <div class="progress-stat-label">{{ if eq .Site.Language.Lang "zh" }}已完成课程{{ else }}Courses Done{{ end }}</div>
+        </div>
+        <div class="progress-stat">
+          <div class="progress-stat-value">1/8</div>
+          <div class="progress-stat-label">{{ if eq .Site.Language.Lang "zh" }}在建项目{{ else }}Projects Built{{ end }}</div>
+        </div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width:0%;" id="overall-progress-bar"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== 02. Projects Section ========== -->
-<section class="content-section" id="projects">
-  <div class="fade-in-up">
-    <h2 class="section-heading">
-      <span class="section-number">02.</span>
-      {{ i18n "projects_title" }}
-    </h2>
+<!-- ========== About ========== -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">{{ if eq .Site.Language.Lang "zh" }}关于我{{ else }}About Me{{ end }}</span>
+      <h2 class="section-title">{{ i18n "about_title" }}</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-avatar fade-up">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div class="about-text fade-up">
+        {{ $aboutKey := printf "about_text" }}
+        {{ $aboutText := i18n $aboutKey | default .Site.Data.site.bio_short }}
+        {{ range split $aboutText "\n\n" }}<p>{{ . }}</p>{{ end }}
+        <div class="skill-tags">
+          {{ range .Site.Data.skills.skills }}<span class="skill-tag">{{ .name }}</span>{{ end }}
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="projects-grid">
-    {{ range where .Site.Data.projects.projects "featured" true }}
-    <div class="project-card fade-in-up">
-      <div class="project-card-header">
-        <svg class="project-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<!-- ========== Projects ========== -->
+<section class="section" id="projects" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">{{ if eq .Site.Language.Lang "zh" }}项目作品{{ else }}Portfolio{{ end }}</span>
+      <h2 class="section-title">{{ i18n "projects_title" }}</h2>
+    </div>
+    <div class="projects-grid">
+      {{ range where .Site.Data.projects.projects "featured" true }}
+      <div class="project-card fade-up">
+        <svg class="project-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
         </svg>
-        <div class="project-links">
-          {{ if .github }}
-          <a href="{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon-link">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-            </svg>
-          </a>
-          {{ end }}
-          {{ if .demo }}
-          <a href="{{ .demo }}" target="_blank" rel="noopener noreferrer" aria-label="Demo" class="social-icon-link">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </a>
-          {{ end }}
-        </div>
-      </div>
-
-      <h3 class="project-card-title">
-        {{ if eq $.Site.Language.Lang "zh" }}{{ .title_zh }}{{ else }}{{ .title }}{{ end }}
-      </h3>
-      <p class="project-card-description">
-        {{ if eq $.Site.Language.Lang "zh" }}{{ .description_zh }}{{ else }}{{ .description }}{{ end }}
-      </p>
-      <ul class="project-tech-list">
-        {{ range .tech }}
-        <li class="project-tech-item">{{ . }}</li>
-        {{ end }}
-      </ul>
-    </div>
-    {{ end }}
-  </div>
-</section>
-
-<!-- ========== 03. Courses Section ========== -->
-<section class="content-section" id="courses">
-  <div class="fade-in-up">
-    <h2 class="section-heading">
-      <span class="section-number">03.</span>
-      {{ i18n "courses_title" }}
-    </h2>
-  </div>
-
-  <div class="courses-list">
-    {{ range .Site.Data.courses.courses }}
-    {{ $statusClass := .status }}
-    <div class="course-card fade-in-up">
-      <div class="course-status {{ $statusClass }}">
-        {{ if eq .status "completed" }}
-          <span>✅</span> {{ i18n "status_completed" }}
-        {{ else if eq .status "in-progress" }}
-          <span>📖</span> {{ i18n "status_in_progress" }}
-        {{ else }}
-          <span>📋</span> {{ i18n "status_planning" }}
-        {{ end }}
-      </div>
-      <div class="course-info">
-        <div class="course-name">
-          {{ if eq $.Site.Language.Lang "zh" }}{{ .name_zh }}{{ else }}{{ .name }}{{ end }}
-        </div>
-        <div class="course-school">
-          {{ .school }} · {{ .phase }} · {{ .days }} days
-        </div>
-      </div>
-      {{ if .url }}
-      <a href="{{ .url }}" class="course-detail-btn" target="_blank" rel="noopener noreferrer">
-        {{ i18n "course_detail" }}
-      </a>
-      {{ end }}
-    </div>
-    {{ end }}
-  </div>
-</section>
-
-<!-- ========== 04. Blog Section ========== -->
-<section class="content-section" id="blog">
-  <div class="fade-in-up">
-    <h2 class="section-heading">
-      <span class="section-number">04.</span>
-      {{ i18n "blog_title" }}
-    </h2>
-  </div>
-
-  <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-    {{ i18n "blog_subtitle" }}
-  </p>
-
-  {{ $blogPosts := where .Site.RegularPages "Section" "blog" }}
-  {{ if $blogPosts }}
-  <div class="blog-preview-list">
-    {{ range first 5 $blogPosts }}
-    <article class="blog-preview-card fade-in-up">
-      <div class="blog-preview-date">{{ .Date.Format "2006-01-02" }}</div>
-      <a href="{{ .RelPermalink }}" class="blog-preview-title" style="text-decoration:none;">
-        {{ .Title }}
-      </a>
-      <p class="blog-preview-excerpt">{{ .Summary | truncate 200 }}</p>
-    </article>
-    {{ end }}
-  </div>
-  {{ else }}
-  <div class="blog-preview-card fade-in-up" style="text-align:center; padding:3rem;">
-    <p style="color: var(--text-secondary); font-size: 1.1rem;">
-      📝 {{ i18n "blog_subtitle" }}
-    </p>
-    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-      {{ if eq .Site.Language.Lang "zh" }}学习之路即将开始，博客文章会在学习过程中陆续发布。{{ else }}The learning journey is about to begin — blog posts coming soon.{{ end }}
-    </p>
-  </div>
-  {{ end }}
-
-  {{ if $blogPosts }}
-  <div style="text-align: center; margin-top: 2rem;">
-    <a href="{{ "blog" | relLangURL }}" class="btn-accent">{{ i18n "view_all_posts" }}</a>
-  </div>
-  {{ end }}
-</section>
-
-<!-- ========== 05. Resume Section ========== -->
-<section class="content-section" id="resume">
-  <div class="fade-in-up">
-    <h2 class="section-heading">
-      <span class="section-number">05.</span>
-      {{ i18n "resume_title" }}
-    </h2>
-  </div>
-
-  <div class="resume-grid">
-    <!-- Education -->
-    <div class="resume-block fade-in-up">
-      <h3 class="resume-block-title">
-        {{ if eq .Site.Language.Lang "zh" }}教育背景{{ else }}Education{{ end }}
-      </h3>
-      <div class="resume-item">
-        <div class="resume-item-title">
-          {{ if eq .Site.Language.Lang "zh" }}浙江大学{{ else }}Zhejiang University{{ end }}
-        </div>
-        <div class="resume-item-subtitle">
-          {{ if eq .Site.Language.Lang "zh" }}软件工程（转专业中）{{ else }}Software Engineering (Transferring){{ end }}
-        </div>
-        <div class="resume-item-date">2024 — 2028</div>
-        <div class="resume-item-description">
-          {{ if eq .Site.Language.Lang "zh" }}主修课程：数据结构、算法设计、计算机系统、数据库系统、人工智能等{{ else }}Relevant Coursework: Data Structures, Algorithm Design, Computer Systems, Database Systems, Artificial Intelligence{{ end }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Skills -->
-    <div class="resume-block fade-in-up">
-      <h3 class="resume-block-title">
-        {{ if eq .Site.Language.Lang "zh" }}技能{{ else }}Skills{{ end }}
-      </h3>
-      {{ range .Site.Data.skills.skills }}
-      <span class="skill-tag" style="margin-bottom:0.5rem;">{{ .name }}</span>
-      {{ end }}
-    </div>
-
-    <!-- Projects Summary -->
-    <div class="resume-block fade-in-up">
-      <h3 class="resume-block-title">
-        {{ if eq .Site.Language.Lang "zh" }}项目经历{{ else }}Projects{{ end }}
-      </h3>
-      {{ range where .Site.Data.projects.projects "featured" true }}
-      <div class="resume-item">
-        <div class="resume-item-title">{{ .title }}</div>
-        <div class="resume-item-subtitle">
-          {{ delimit .tech " · " }}
-        </div>
-        <div class="resume-item-description">
+        <h3 class="project-card-title">
+          {{ if eq $.Site.Language.Lang "zh" }}{{ .title_zh }}{{ else }}{{ .title }}{{ end }}
+        </h3>
+        <p class="project-card-desc">
           {{ if eq $.Site.Language.Lang "zh" }}{{ .description_zh }}{{ else }}{{ .description }}{{ end }}
+        </p>
+        <div class="project-card-meta">
+          {{ with .course }}<span class="project-card-course">{{ . }}</span>{{ end }}
+          {{ if eq .status "planning" }}<span class="project-card-status">⏳ {{ i18n "status_planning" }}</span>{{ end }}
+          {{ if eq .status "in-progress" }}<span class="project-card-status">📖 {{ i18n "status_in_progress" }}</span>{{ end }}
+          {{ if eq .status "completed" }}<span class="project-card-status">✅ {{ i18n "status_completed" }}</span>{{ end }}
         </div>
+        <ul class="project-tech">
+          {{ range .tech }}<li>{{ . }}</li>{{ end }}
+        </ul>
       </div>
       {{ end }}
     </div>
   </div>
+</section>
 
-  <div class="resume-download fade-in-up">
-    <a href="{{ "resume-cn.pdf" | relURL }}" class="btn-accent" target="_blank">{{ i18n "download_resume_cn" }}</a>
-    <a href="{{ "resume-en.pdf" | relURL }}" class="btn-accent" target="_blank">{{ i18n "download_resume_en" }}</a>
+<!-- ========== Courses ========== -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">{{ if eq .Site.Language.Lang "zh" }}学习路线{{ else }}Learning Path{{ end }}</span>
+      <h2 class="section-title">{{ i18n "courses_title" }}</h2>
+    </div>
+    <div class="courses-list">
+      {{ range .Site.Data.courses.courses }}
+      <div class="course-card fade-up">
+        <div class="course-status-icon">
+          {{ if eq .status "completed" }}✅
+          {{ else if eq .status "in-progress" }}📖
+          {{ else }}📋
+          {{ end }}
+        </div>
+        <div class="course-info">
+          <div class="course-name">
+            {{ if eq $.Site.Language.Lang "zh" }}{{ .name_zh }}{{ else }}{{ .name }}{{ end }}
+          </div>
+          <div class="course-meta">
+            <span>{{ .school }}</span>
+            <span>{{ .days }} {{ if eq $.Site.Language.Lang "zh" }}天{{ else }}days{{ end }}</span>
+            {{ with .labs }}<span>{{ . }}</span>{{ end }}
+          </div>
+          <span class="course-phase">{{ .phase }}</span>
+        </div>
+        {{ if .url }}
+        <a href="{{ .url }}" class="course-link" target="_blank" rel="noopener noreferrer">{{ i18n "course_detail" }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
   </div>
 </section>
 
-<!-- ========== 06. Contact Section ========== -->
-<section class="content-section" id="contact" style="min-height:80vh;">
-  <div class="fade-in-up" style="text-align:center;">
-    <h2 class="section-heading" style="justify-content:center;">
-      <span class="section-number">06.</span>
-      {{ i18n "contact_title" }}
-    </h2>
+<!-- ========== Blog ========== -->
+<section class="section" id="blog" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">{{ if eq .Site.Language.Lang "zh" }}学习笔记{{ else }}Notes{{ end }}</span>
+      <h2 class="section-title">{{ i18n "blog_title" }}</h2>
+    </div>
+    {{ $blogPosts := where .Site.RegularPages "Section" "blog" }}
+    {{ if $blogPosts }}
+    <div class="blog-list">
+      {{ range first 3 $blogPosts }}
+      <article class="blog-card fade-up">
+        <div class="blog-card-date">{{ .Date.Format "2006-01-02" }}</div>
+        <a href="{{ .RelPermalink }}" style="text-decoration:none;"><h3 class="blog-card-title">{{ .Title }}</h3></a>
+        <p class="blog-card-excerpt">{{ .Summary | plainify | truncate 200 }}</p>
+        {{ with .Params.tags }}
+        <div class="blog-card-tags">{{ range . }}<span class="blog-tag">{{ . }}</span>{{ end }}</div>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="{{ "blog" | relLangURL }}" class="btn btn-outline">{{ i18n "view_all_posts" }}</a>
+    </div>
+    {{ else }}
+    <div class="blog-card fade-up" style="text-align:center;padding:3rem;">
+      <p style="font-size:1.1rem;color:var(--text-secondary);">
+        📝 {{ if eq .Site.Language.Lang "zh" }}学习之路即将开始，博客文章会在学习过程中陆续发布。{{ else }}The learning journey is about to begin — blog posts coming soon.{{ end }}
+      </p>
+    </div>
+    {{ end }}
   </div>
+</section>
 
-  <div class="fade-in-up">
-    <p class="contact-text">{{ i18n "contact_text" }}</p>
-    <div style="text-align:center;">
-      <a href="mailto:{{ .Site.Params.email }}" class="btn-accent contact-email">
-        {{ i18n "contact_cta" }}
-      </a>
+<!-- ========== Resume ========== -->
+<section class="section" id="resume">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">Curriculum Vitae</span>
+      <h2 class="section-title">{{ i18n "resume_title" }}</h2>
+    </div>
+    <div class="resume-grid">
+      <div class="resume-block fade-up">
+        <h3 class="resume-block-title">{{ if eq .Site.Language.Lang "zh" }}教育背景{{ else }}Education{{ end }}</h3>
+        <div class="resume-item">
+          <div class="resume-item-title">{{ if eq .Site.Language.Lang "zh" }}浙江大学{{ else }}Zhejiang University{{ end }}</div>
+          <div class="resume-item-sub">{{ if eq .Site.Language.Lang "zh" }}软件工程（转专业中）{{ else }}Software Engineering (Transferring){{ end }}</div>
+          <div class="resume-item-date">2024 — 2028</div>
+          <div class="resume-item-desc">{{ if eq .Site.Language.Lang "zh" }}主修课程：数据结构、算法设计、计算机系统、数据库系统、人工智能、计算机网络、操作系统{{ else }}Relevant Coursework: Data Structures, Algorithms, Computer Systems, Database Systems, AI, Computer Networks, Operating Systems{{ end }}</div>
+        </div>
+      </div>
+      <div class="resume-block fade-up">
+        <h3 class="resume-block-title">{{ if eq .Site.Language.Lang "zh" }}技能{{ else }}Skills{{ end }}</h3>
+        {{ range .Site.Data.skills.skills }}<span class="skill-tag" style="margin-bottom:.5rem;">{{ .name }}</span>{{ end }}
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="fade-up">
+      <a href="#" class="btn btn-outline" style="margin:0 .5rem;">{{ i18n "download_resume_cn" }}</a>
+      <a href="#" class="btn btn-outline" style="margin:0 .5rem;">{{ i18n "download_resume_en" }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Contact ========== -->
+<section class="section contact" id="contact" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">{{ if eq .Site.Language.Lang "zh" }}联系方式{{ else }}Get in Touch{{ end }}</span>
+      <h2 class="contact-title">{{ i18n "contact_title" }}</h2>
+      <p class="contact-text">{{ i18n "contact_text" }}</p>
+      <a href="mailto:{{ .Site.Params.email }}" class="btn btn-primary contact-email">{{ i18n "contact_cta" }}</a>
     </div>
   </div>
 </section>

@@ -6,8 +6,7 @@ node_modules/
 /resources/
 /.hugo_build.lock
 
-# Generated files
-static/css/main.css
+# Generated files (keep — CSS is built by CI but also committed for safety)
 
 # OS files
 .DS_Store
