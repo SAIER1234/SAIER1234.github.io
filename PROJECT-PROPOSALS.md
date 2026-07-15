@@ -1,6 +1,6 @@
-# 5+1 项目详细提案
+# 8 项目详细提案
 
-> 5个核心项目 + 1个可选项目。覆盖 Python / C / C++ / AI / Web 五个方向。
+> 8个核心项目。覆盖 Python / C / C++ / AI / Web / 网络 / OS 七个方向。
 
 ---
 
@@ -13,9 +13,10 @@
 | 3 | MiniDB | C++ | 数据库 | ⭐⭐⭐⭐ | CMU 15-445 | ~38h |
 | 4 | ClassifyAI | Python | AI/ML | ⭐⭐⭐ | CS188 | ~18h |
 | 5 | Personal Website | Hugo/JS | Web | ⭐⭐ | 综合 | (已有) |
-| 6* | TinyProxy | C | 网络 | ⭐⭐⭐ | CS168S | ~15h |
+| 6 | TinyProxy | C | 网络编程 | ⭐⭐⭐ | CS168S | ~15h |
+| 7 | MiniOS | C | 操作系统 | ⭐⭐⭐ | MIT 6.S083 | ~15h |
 
-> \* 可选项目，如果学完计算机网络再做
+> 全部必修，无选学项目。
 
 ---
 
@@ -432,15 +433,17 @@ GitHub Pages — 免费托管
 
 ---
 
-## Project 6 [可选]: TinyProxy — 简易 HTTP 代理服务器
+## Project 6: TinyProxy — 简易 HTTP 代理服务器 🔥 必修
 
 ### 简介
 
 用 C 实现一个支持缓存的 HTTP 正向代理服务器。
 
-### 优先级说明
+### 为什么值得做？
 
-这个项目建议在**学完 CS168S（计算机网络）后**再做。如果你暑假没时间学 CS168S，可以跳过这个项目。5 个核心项目已经足够全面。
+- 计算机网络课程的直接产出，展示 Socket 编程和 HTTP 协议理解
+- 配合 CS168S 课程学习，理论与实践结合
+- 展示并发编程能力（多线程/线程池）
 
 ### MVP 功能
 
@@ -450,29 +453,131 @@ GitHub Pages — 免费托管
 | LRU 缓存 | 缓存响应，减少重复请求 |
 | 并发处理 | pthread 多线程 |
 | 访问日志 | 记录每次请求 |
+| 黑名单过滤 | 简单的 URL 过滤规则 |
 
 ### 技术栈
 
 ```
-C, socket(), pthread, HTTP/1.1 协议
+C, socket(), pthread, HTTP/1.1 协议, LRU Cache
 ```
 
-### 预估时间：~15h
+### 项目结构
+
+```
+tinyproxy/
+├── src/
+│   ├── main.c          # 入口，启动监听
+│   ├── proxy.c         # 请求转发逻辑
+│   ├── cache.c         # LRU 缓存
+│   ├── filter.c        # URL 过滤
+│   └── log.c           # 日志
+├── include/
+├── Makefile
+└── README.md
+```
+
+### 实现步骤
+
+| 步骤 | 时间 | 内容 |
+|------|------|------|
+| 1 | 3h | Socket 监听 + accept 连接 |
+| 2 | 3h | HTTP 请求解析 + 转发 |
+| 3 | 3h | LRU 缓存实现 |
+| 4 | 3h | 多线程并发 + 线程池 |
+| 5 | 3h | 日志 + 过滤 + README |
+
+### 进阶扩展
+
+- HTTPS CONNECT 隧道支持
+- 带宽限制/流量统计
+- 配置文件支持
+
+---
+
+## Project 7: MiniOS — xv6 操作系统扩展 🔥 必修
+
+### 简介
+
+基于 MIT 的 xv6 教学操作系统进行扩展，实现新系统调用、写时复制 fork、进程优先级调度。
+
+### 为什么值得做？
+
+- 操作系统课程的直接产出
+- 展示对 OS 内核的深刻理解
+- 比纯理论更有说服力 —— 「我真的改过操作系统内核」
+
+### MVP 功能
+
+| 功能 | 说明 |
+|------|------|
+| 系统调用 | 添加 `getreadcount()` 统计读操作次数 |
+| Copy-on-Write fork | 优化 fork 性能，父子进程共享页表直到写入 |
+| 优先级调度 | 简单的多级反馈队列调度器 |
+| 用户程序 | 编写测试程序验证新功能 |
+
+### 技术栈
+
+```
+C, xv6 (RISC-V), QEMU, gdb
+```
+
+### 项目结构
+
+```
+minios/
+├── xv6-riscv/          # xv6 源码（修改后的）
+│   ├── kernel/
+│   │   ├── syscall.c   # 新增系统调用
+│   │   ├── proc.c      # 调度器修改
+│   │   ├── vm.c        # CoW fork 实现
+│   │   └── ...
+│   └── user/           # 测试用户程序
+├── docs/
+│   └── design.md       # 设计文档
+├── README.md
+└── Makefile
+```
+
+### 实现步骤
+
+| 步骤 | 时间 | 内容 |
+|------|------|------|
+| 1 | 3h | 环境搭建：QEMU + xv6 编译运行 + gdb 调试 |
+| 2 | 3h | 添加 `getreadcount` 系统调用 |
+| 3 | 5h | 实现 Copy-on-Write fork |
+| 4 | 4h | 实现多级反馈队列调度器 |
+
+### 关键学习点
+
+- xv6 的启动流程：boot → kernel main → scheduler
+- 系统调用的完整路径：用户态 → ecall → trap → syscall handler
+- 页表机制：RISC-V Sv39 虚拟内存
+- CoW fork：利用页表权限位实现延迟拷贝
+- 进程调度：时间片、优先级、MLFQ
+
+### 进阶扩展
+
+- 实现简单的内存映射文件 (mmap)
+- 添加网络栈（参考 xv6-net 项目）
+- 容器/命名空间隔离原型
 
 ---
 
 ## 项目时间线（建议的启动时机）
 
 ```
-Day  1-3    The Missing Semester
-Day  4-10   CS61A ──────────────→ 结束后启动 Project 1 (DevFlow)
-Day 11-17   CS188 ──────────────→ 结束后启动 Project 4 (ClassifyAI)
-Day 18-38   CSAPP + 15-445 ────→ 过程中启动 Project 2 (TinyShell)
-                                 过程中启动 Project 3 (MiniDB)
-                                 穿插维护 Project 5 (Website)
-Day 39-45   项目冲刺 ──────────→ 打磨所有项目 + 简历 + 面试准备
+Day  1-3    The Missing Semester ─→ 穿插维护 Project 5 (Website)
+Day  4-10   CS61A ────────────────→ 结束后启动 Project 1 (DevFlow)
+Day 11-17   CS188 ────────────────→ 结束后启动 Project 4 (ClassifyAI)
+Day 18-38   四课并行 ─────────────→ CSAPP    → Project 2 (TinyShell)  [Day 35+]
+                                   15-445   → Project 3 (MiniDB)     [Day 24+]
+                                   CS168S   → Project 6 (TinyProxy)  [Day 30+]
+                                   6.S083   → Project 7 (MiniOS)     [Day 35+]
+Day 39-45   项目冲刺 ────────────→ 打磨全部 7 项目 + 简历 + 面试准备
 ```
 
 ---
 
 > 💡 **记住：** 先保证项目跑通 MVP，再考虑进阶功能。一个能跑的 MVP 远比一个做了一半的宏大项目更像样！
+
+> 🔥 **8 个项目覆盖 7 大方向：** Python CLI → C 系统编程 → C++ 数据库 → Python AI/ML → Web → 网络编程 → 操作系统。面试时无论被问到哪个方向，你都有东西可以展示。
