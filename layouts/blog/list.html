@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="blog-list-header">
+  <h1 class="blog-list-title">{{ .Title }}</h1>
+  <p class="blog-list-subtitle">{{ i18n "blog_subtitle" }}</p>
+</div>
+
+{{ $pages := .Pages }}
+{{ if $pages }}
+<div class="blog-preview-list">
+  {{ range $pages.ByDate.Reverse }}
+  <article class="blog-list-item fade-in-up">
+    <div class="blog-list-date">{{ .Date.Format "January 2, 2006" }}</div>
+    <a href="{{ .RelPermalink }}" class="blog-list-link">{{ .Title }}</a>
+    <p class="blog-preview-excerpt" style="margin-top:0.5rem;">{{ .Summary | truncate 250 }}</p>
+    {{ with .Params.tags }}
+    <div style="margin-top:0.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+      {{ range . }}
+      <span class="skill-tag" style="font-size:0.7rem;padding:0.15rem 0.5rem;">{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </article>
+  {{ end }}
+</div>
+{{ else }}
+<div style="text-align:center;padding:4rem 0;">
+  <p style="font-size:2rem;margin-bottom:1rem;">📝</p>
+  <p style="color:var(--text-secondary);font-size:1.1rem;">
+    {{ if eq .Site.Language.Lang "zh" }}还没有文章。学习之旅即将开始！{{ else }}No posts yet. The learning journey is about to begin!{{ end }}
+  </p>
+</div>
+{{ end }}
+{{ end }}

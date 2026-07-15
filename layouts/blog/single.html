@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article>
+  <header class="single-header">
+    <p class="single-meta">{{ .Date.Format "January 2, 2006" }}
+      {{ with .Params.tags }}
+      · {{ range . }}<span style="color:var(--accent);">#{{ . }}</span> {{ end }}
+      {{ end }}
+    </p>
+    <h1 class="single-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="single-content fade-in-up">
+    {{ .Content }}
+  </div>
+
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
+    <a href="{{ "blog" | relLangURL }}" style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.85rem;">
+      ← {{ if eq .Site.Language.Lang "zh" }}返回博客列表{{ else }}Back to Blog{{ end }}
+    </a>
+  </div>
+</article>
+{{ end }}

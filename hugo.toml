@@ -1,0 +1,30 @@
+baseURL = 'https://saier1234.github.io/'
+locale = 'zh'
+defaultContentLanguage = 'zh'
+title = 'SAIER — Personal Website'
+enableRobotsTXT = true
+enableEmoji = true
+
+[build]
+  writeStats = true
+
+[markup]
+  [markup.highlight]
+    style = 'onedark'
+    noClasses = false
+
+[languages]
+  [languages.zh]
+    label = '中文'
+    weight = 1
+    contentDir = 'content'
+  [languages.en]
+    label = 'EN'
+    weight = 2
+    contentDir = 'content'
+
+[params]
+  github = 'https://github.com/SAIER1234'
+  email = '2543662575@qq.com'
+  description = 'CS Student @ ZJU — Building & Learning'
+  descriptionZh = '浙江大学软件工程方向学生 — 探索计算机科学的边界'

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" class="">
+  {{ partial "head.html" . }}
+  <body>
+    <div class="app">
+      {{ partial "sidebar.html" . }}
+      <main class="main-content" id="main-content">
+        {{ block "main" . }}{{ end }}
+        {{ partial "footer.html" . }}
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    {{ $themeJs := resources.Get "js/theme.js" }}
+    {{ $navJs := resources.Get "js/nav.js" }}
+    {{ $animJs := resources.Get "js/animate.js" }}
+    {{ $js := slice $themeJs $navJs $animJs | resources.Concat "js/main.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $js = $js | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  </body>
+</html>

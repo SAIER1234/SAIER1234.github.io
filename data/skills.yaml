@@ -1,0 +1,12 @@
+# Skills data
+skills:
+  - name: "Python"
+  - name: "C"
+  - name: "C++"
+  - name: "Git"
+  - name: "Linux"
+  - name: "SQL"
+  - name: "HTML/CSS"
+  - name: "JavaScript"
+  - name: "Machine Learning"
+  - name: "Data Structures"

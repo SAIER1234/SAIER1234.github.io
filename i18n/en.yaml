@@ -1,0 +1,51 @@
+# English translations
+about: "About"
+projects: "Projects"
+courses: "Courses"
+blog: "Blog"
+resume: "Resume"
+contact: "Contact"
+
+# Hero
+greeting: "Hi, my name is"
+tagline: "I build & explore."
+hero_desc: "I'm a student at Zhejiang University, systematically learning computer science. I'm passionate about building practical tools, exploring low-level systems, and creating interesting AI applications."
+cta: "Check out my projects →"
+
+# About
+about_title: "About Me"
+about_text: "I'm currently studying at Zhejiang University, preparing to transfer to Software Engineering. I'm passionate about understanding every layer of a computer system — from how processors execute instructions, to how databases organize massive data, to how AI models perform reasoning.\n\nOutside the classroom, I love building projects to solidify what I've learned. This website serves as a witness to my summer learning journey — documenting every course I've taken and every project I've built.\n\nWhen I'm not coding, I enjoy..."
+
+# Projects
+projects_title: "Things I've Built"
+view_project: "View Project"
+
+# Courses
+courses_title: "What I'm Learning"
+course_detail: "Details"
+status_completed: "Completed"
+status_in_progress: "In Progress"
+status_planning: "Planning"
+
+# Blog
+blog_title: "Blog"
+blog_subtitle: "Thoughts and summaries from my learning journey"
+read_more: "Read More →"
+view_all_posts: "View All Posts →"
+
+# Resume
+resume_title: "Resume"
+download_resume_cn: "Download Chinese Resume (PDF)"
+download_resume_en: "Download English Resume (PDF)"
+
+# Contact
+contact_title: "Get In Touch"
+contact_text: "If you're interested in my projects, want to chat about computer science or learning, or just want to say hi — feel free to reach out!"
+contact_cta: "Say Hello"
+
+# Footer
+footer_text: "Designed & Built by SAIER"
+
+# Theme
+dark_mode: "Dark Mode"
+light_mode: "Light Mode"

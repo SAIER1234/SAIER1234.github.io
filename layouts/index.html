@@ -1,0 +1,264 @@
+{{ define "main" }}
+
+<!-- ========== Hero Section ========== -->
+<section class="content-section" id="hero" style="min-height:100vh;">
+  <div class="fade-in-up">
+    <p class="hero-greeting">{{ i18n "greeting" }}</p>
+    <h1 class="hero-name">{{ hugo.Data.site.name }}</h1>
+    <h2 class="hero-tagline">{{ i18n "tagline" }}</h2>
+    <p class="hero-description">{{ i18n "hero_desc" }}</p>
+    <a href="#projects" class="btn-accent">{{ i18n "cta" }}</a>
+  </div>
+</section>
+
+<!-- ========== 01. About Section ========== -->
+<section class="content-section" id="about">
+  <div class="fade-in-up">
+    <h2 class="section-heading">
+      <span class="section-number">01.</span>
+      {{ i18n "about_title" }}
+    </h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="fade-in-up">
+      {{ $aboutKey := printf "about_text" }}
+      {{ $aboutText := i18n $aboutKey | default hugo.Data.site.bio_short }}
+      {{ range split $aboutText "\n\n" }}
+        <p>{{ . }}</p>
+      {{ end }}
+
+      <div class="skill-tags">
+        {{ range hugo.Data.skills.skills }}
+        <span class="skill-tag">{{ .name }}</span>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="about-image-wrapper fade-in-up">
+      <div class="about-image-border"></div>
+      <img src="{{ "images/avatar.svg" | relURL }}" alt="SAIER" class="about-image">
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02. Projects Section ========== -->
+<section class="content-section" id="projects">
+  <div class="fade-in-up">
+    <h2 class="section-heading">
+      <span class="section-number">02.</span>
+      {{ i18n "projects_title" }}
+    </h2>
+  </div>
+
+  <div class="projects-grid">
+    {{ range where hugo.Data.projects.projects "featured" true }}
+    <div class="project-card fade-in-up">
+      <div class="project-card-header">
+        <svg class="project-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+        </svg>
+        <div class="project-links">
+          {{ if .github }}
+          <a href="{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+          {{ end }}
+          {{ if .demo }}
+          <a href="{{ .demo }}" target="_blank" rel="noopener noreferrer" aria-label="Demo" class="social-icon-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <h3 class="project-card-title">
+        {{ if eq $.Site.Language.Lang "zh" }}{{ .title_zh }}{{ else }}{{ .title }}{{ end }}
+      </h3>
+      <p class="project-card-description">
+        {{ if eq $.Site.Language.Lang "zh" }}{{ .description_zh }}{{ else }}{{ .description }}{{ end }}
+      </p>
+      <ul class="project-tech-list">
+        {{ range .tech }}
+        <li class="project-tech-item">{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ========== 03. Courses Section ========== -->
+<section class="content-section" id="courses">
+  <div class="fade-in-up">
+    <h2 class="section-heading">
+      <span class="section-number">03.</span>
+      {{ i18n "courses_title" }}
+    </h2>
+  </div>
+
+  <div class="courses-list">
+    {{ range hugo.Data.courses.courses }}
+    {{ $statusClass := .status }}
+    <div class="course-card fade-in-up">
+      <div class="course-status {{ $statusClass }}">
+        {{ if eq .status "completed" }}
+          <span>✅</span> {{ i18n "status_completed" }}
+        {{ else if eq .status "in-progress" }}
+          <span>📖</span> {{ i18n "status_in_progress" }}
+        {{ else }}
+          <span>📋</span> {{ i18n "status_planning" }}
+        {{ end }}
+      </div>
+      <div class="course-info">
+        <div class="course-name">
+          {{ if eq $.Site.Language.Lang "zh" }}{{ .name_zh }}{{ else }}{{ .name }}{{ end }}
+        </div>
+        <div class="course-school">
+          {{ .school }} · {{ .phase }} · {{ .days }} days
+        </div>
+      </div>
+      {{ if .url }}
+      <a href="{{ .url }}" class="course-detail-btn" target="_blank" rel="noopener noreferrer">
+        {{ i18n "course_detail" }}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ========== 04. Blog Section ========== -->
+<section class="content-section" id="blog">
+  <div class="fade-in-up">
+    <h2 class="section-heading">
+      <span class="section-number">04.</span>
+      {{ i18n "blog_title" }}
+    </h2>
+  </div>
+
+  <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+    {{ i18n "blog_subtitle" }}
+  </p>
+
+  {{ $blogPosts := where .Site.RegularPages "Section" "blog" }}
+  {{ if $blogPosts }}
+  <div class="blog-preview-list">
+    {{ range first 5 $blogPosts }}
+    <article class="blog-preview-card fade-in-up">
+      <div class="blog-preview-date">{{ .Date.Format "2006-01-02" }}</div>
+      <a href="{{ .RelPermalink }}" class="blog-preview-title" style="text-decoration:none;">
+        {{ .Title }}
+      </a>
+      <p class="blog-preview-excerpt">{{ .Summary | truncate 200 }}</p>
+    </article>
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="blog-preview-card fade-in-up" style="text-align:center; padding:3rem;">
+    <p style="color: var(--text-secondary); font-size: 1.1rem;">
+      📝 {{ i18n "blog_subtitle" }}
+    </p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+      {{ if eq .Site.Language.Lang "zh" }}学习之路即将开始，博客文章会在学习过程中陆续发布。{{ else }}The learning journey is about to begin — blog posts coming soon.{{ end }}
+    </p>
+  </div>
+  {{ end }}
+
+  {{ if $blogPosts }}
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{{ "blog" | relLangURL }}" class="btn-accent">{{ i18n "view_all_posts" }}</a>
+  </div>
+  {{ end }}
+</section>
+
+<!-- ========== 05. Resume Section ========== -->
+<section class="content-section" id="resume">
+  <div class="fade-in-up">
+    <h2 class="section-heading">
+      <span class="section-number">05.</span>
+      {{ i18n "resume_title" }}
+    </h2>
+  </div>
+
+  <div class="resume-grid">
+    <!-- Education -->
+    <div class="resume-block fade-in-up">
+      <h3 class="resume-block-title">
+        {{ if eq .Site.Language.Lang "zh" }}教育背景{{ else }}Education{{ end }}
+      </h3>
+      <div class="resume-item">
+        <div class="resume-item-title">
+          {{ if eq .Site.Language.Lang "zh" }}浙江大学{{ else }}Zhejiang University{{ end }}
+        </div>
+        <div class="resume-item-subtitle">
+          {{ if eq .Site.Language.Lang "zh" }}软件工程（转专业中）{{ else }}Software Engineering (Transferring){{ end }}
+        </div>
+        <div class="resume-item-date">2024 — 2028</div>
+        <div class="resume-item-description">
+          {{ if eq .Site.Language.Lang "zh" }}主修课程：数据结构、算法设计、计算机系统、数据库系统、人工智能等{{ else }}Relevant Coursework: Data Structures, Algorithm Design, Computer Systems, Database Systems, Artificial Intelligence{{ end }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="resume-block fade-in-up">
+      <h3 class="resume-block-title">
+        {{ if eq .Site.Language.Lang "zh" }}技能{{ else }}Skills{{ end }}
+      </h3>
+      {{ range hugo.Data.skills.skills }}
+      <span class="skill-tag" style="margin-bottom:0.5rem;">{{ .name }}</span>
+      {{ end }}
+    </div>
+
+    <!-- Projects Summary -->
+    <div class="resume-block fade-in-up">
+      <h3 class="resume-block-title">
+        {{ if eq .Site.Language.Lang "zh" }}项目经历{{ else }}Projects{{ end }}
+      </h3>
+      {{ range where hugo.Data.projects.projects "featured" true }}
+      <div class="resume-item">
+        <div class="resume-item-title">{{ .title }}</div>
+        <div class="resume-item-subtitle">
+          {{ delimit .tech " · " }}
+        </div>
+        <div class="resume-item-description">
+          {{ if eq $.Site.Language.Lang "zh" }}{{ .description_zh }}{{ else }}{{ .description }}{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="resume-download fade-in-up">
+    <a href="{{ "resume-cn.pdf" | relURL }}" class="btn-accent" target="_blank">{{ i18n "download_resume_cn" }}</a>
+    <a href="{{ "resume-en.pdf" | relURL }}" class="btn-accent" target="_blank">{{ i18n "download_resume_en" }}</a>
+  </div>
+</section>
+
+<!-- ========== 06. Contact Section ========== -->
+<section class="content-section" id="contact" style="min-height:80vh;">
+  <div class="fade-in-up" style="text-align:center;">
+    <h2 class="section-heading" style="justify-content:center;">
+      <span class="section-number">06.</span>
+      {{ i18n "contact_title" }}
+    </h2>
+  </div>
+
+  <div class="fade-in-up">
+    <p class="contact-text">{{ i18n "contact_text" }}</p>
+    <div style="text-align:center;">
+      <a href="mailto:{{ .Site.Params.email }}" class="btn-accent contact-email">
+        {{ i18n "contact_cta" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

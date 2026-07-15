@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article>
+  <header class="single-header">
+    {{ with .Date }}
+    <p class="single-meta">{{ .Format "January 2, 2006" }}</p>
+    {{ end }}
+    <h1 class="single-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="single-content fade-in-up">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="blog-list-header">
+  <h1 class="blog-list-title">{{ .Title }}</h1>
+  {{ with .Description }}
+  <p class="blog-list-subtitle">{{ . }}</p>
+  {{ end }}
+</div>
+
+<div class="single-content">
+  {{ .Content }}
+</div>
+
+{{ if .Pages }}
+<div class="blog-preview-list">
+  {{ range .Pages }}
+  <article class="blog-preview-card fade-in-up">
+    <div class="blog-preview-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </div>
+    <p class="blog-preview-excerpt">{{ .Summary | truncate 200 }}</p>
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}

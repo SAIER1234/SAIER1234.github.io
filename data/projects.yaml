@@ -1,0 +1,73 @@
+# Projects Data
+projects:
+  - id: "devflow"
+    title: "DevFlow"
+    title_zh: "DevFlow — 开发者效率工具集"
+    description: "A Python CLI toolkit that automates everyday dev tasks: file organization, project scaffolding, git log beautifier, and repository statistics."
+    description_zh: "一个Python命令行工具集，自动化日常开发操作：文件整理、项目脚手架、Git日志美化和仓库统计。"
+    tech: ["Python", "argparse", "rich", "pytest"]
+    github: "https://github.com/SAIER1234/devflow"
+    demo: ""
+    status: "planning"
+    course: "CS61A"
+    featured: true
+
+  - id: "tinyshell"
+    title: "TinyShell"
+    title_zh: "TinyShell — 迷你Unix Shell"
+    description: "A Unix shell implementation from scratch featuring pipelines, I/O redirection, job control, and signal handling."
+    description_zh: "从零实现的Unix Shell，支持管道、I/O重定向、作业控制和信号处理。"
+    tech: ["C", "fork", "exec", "pipe", "signal"]
+    github: "https://github.com/SAIER1234/tinyshell"
+    demo: ""
+    status: "planning"
+    course: "CSAPP"
+    featured: true
+
+  - id: "minidb"
+    title: "MiniDB"
+    title_zh: "MiniDB — 迷你关系数据库"
+    description: "A relational database engine built from scratch with page-based storage, buffer pool, B+Tree index, and a basic SQL executor."
+    description_zh: "从零构建的关系型数据库引擎：基于页面的存储、缓冲池、B+树索引和基本SQL执行器。"
+    tech: ["C++17", "CMake", "Google Test"]
+    github: "https://github.com/SAIER1234/minidb"
+    demo: ""
+    status: "planning"
+    course: "CMU 15-445"
+    featured: true
+
+  - id: "classifyai"
+    title: "ClassifyAI"
+    title_zh: "ClassifyAI — 智能分类器"
+    description: "An interactive web app for machine learning classification: upload data, train models, tune parameters, and visualize results."
+    description_zh: "一个交互式机器学习分类Web应用：上传数据、训练模型、调参、可视化结果。"
+    tech: ["Python", "scikit-learn", "Flask", "Chart.js"]
+    github: "https://github.com/SAIER1234/classifyai"
+    demo: ""
+    status: "planning"
+    course: "CS188"
+    featured: true
+
+  - id: "personal-website"
+    title: "Personal Website"
+    title_zh: "个人网站"
+    description: "This very website — a bilingual portfolio built with Hugo and Tailwind CSS, featuring dark/light mode and automated CI/CD deployment."
+    description_zh: "就是这个网站——用Hugo和Tailwind CSS构建的双语作品集，支持深色/亮色模式和CI/CD自动部署。"
+    tech: ["Hugo", "Tailwind CSS", "JavaScript", "GitHub Actions"]
+    github: "https://github.com/SAIER1234/personal-website"
+    demo: "https://saier1234.github.io"
+    status: "in-progress"
+    course: "Web Development"
+    featured: true
+
+  - id: "tinyproxy"
+    title: "TinyProxy"
+    title_zh: "TinyProxy — 简易HTTP代理"
+    description: "A lightweight HTTP forward proxy server with LRU caching and concurrent connection handling."
+    description_zh: "一个轻量级HTTP正向代理服务器，支持LRU缓存和并发连接处理。"
+    tech: ["C", "socket", "pthread", "HTTP"]
+    github: "https://github.com/SAIER1234/tinyproxy"
+    demo: ""
+    status: "planning"
+    course: "CS168S (Optional)"
+    featured: false
