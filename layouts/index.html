@@ -4,7 +4,7 @@
 <section class="content-section" id="hero" style="min-height:100vh;">
   <div class="fade-in-up">
     <p class="hero-greeting">{{ i18n "greeting" }}</p>
-    <h1 class="hero-name">{{ hugo.Data.site.name }}</h1>
+    <h1 class="hero-name">{{ .Site.Data.site.name }}</h1>
     <h2 class="hero-tagline">{{ i18n "tagline" }}</h2>
     <p class="hero-description">{{ i18n "hero_desc" }}</p>
     <a href="#projects" class="btn-accent">{{ i18n "cta" }}</a>
@@ -23,13 +23,13 @@
   <div class="about-grid">
     <div class="fade-in-up">
       {{ $aboutKey := printf "about_text" }}
-      {{ $aboutText := i18n $aboutKey | default hugo.Data.site.bio_short }}
+      {{ $aboutText := i18n $aboutKey | default .Site.Data.site.bio_short }}
       {{ range split $aboutText "\n\n" }}
         <p>{{ . }}</p>
       {{ end }}
 
       <div class="skill-tags">
-        {{ range hugo.Data.skills.skills }}
+        {{ range .Site.Data.skills.skills }}
         <span class="skill-tag">{{ .name }}</span>
         {{ end }}
       </div>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="projects-grid">
-    {{ range where hugo.Data.projects.projects "featured" true }}
+    {{ range where .Site.Data.projects.projects "featured" true }}
     <div class="project-card fade-in-up">
       <div class="project-card-header">
         <svg class="project-folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -104,7 +104,7 @@
   </div>
 
   <div class="courses-list">
-    {{ range hugo.Data.courses.courses }}
+    {{ range .Site.Data.courses.courses }}
     {{ $statusClass := .status }}
     <div class="course-card fade-in-up">
       <div class="course-status {{ $statusClass }}">
@@ -212,7 +212,7 @@
       <h3 class="resume-block-title">
         {{ if eq .Site.Language.Lang "zh" }}技能{{ else }}Skills{{ end }}
       </h3>
-      {{ range hugo.Data.skills.skills }}
+      {{ range .Site.Data.skills.skills }}
       <span class="skill-tag" style="margin-bottom:0.5rem;">{{ .name }}</span>
       {{ end }}
     </div>
@@ -222,7 +222,7 @@
       <h3 class="resume-block-title">
         {{ if eq .Site.Language.Lang "zh" }}项目经历{{ else }}Projects{{ end }}
       </h3>
-      {{ range where hugo.Data.projects.projects "featured" true }}
+      {{ range where .Site.Data.projects.projects "featured" true }}
       <div class="resume-item">
         <div class="resume-item-title">{{ .title }}</div>
         <div class="resume-item-subtitle">

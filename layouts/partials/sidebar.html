@@ -3,12 +3,12 @@
   <div>
     <div class="sidebar-header">
       <img src="{{ "images/avatar.svg" | relURL }}" alt="SAIER" class="sidebar-avatar">
-      <div class="sidebar-name">{{ hugo.Data.site.name }}</div>
-      <div class="sidebar-title">{{ hugo.Data.site.tagline }}</div>
+      <div class="sidebar-name">{{ .Site.Data.site.name }}</div>
+      <div class="sidebar-title">{{ .Site.Data.site.tagline }}</div>
     </div>
 
     <nav class="sidebar-nav">
-      {{ range hugo.Data.navigation.sections }}
+      {{ range .Site.Data.navigation.sections }}
       <a href="{{ .url }}" class="nav-link" data-section="{{ .id }}">
         <span class="nav-number">{{ .number }}.</span>
         <span>{{ i18n .i18n_key | default .i18n_key }}</span>
