@@ -28,6 +28,7 @@
       "p",
       "path",
       "polyline",
+      "pre",
       "script",
       "section",
       "span",
@@ -58,6 +59,7 @@
       "btn",
       "btn-outline",
       "btn-primary",
+      "chroma",
       "contact",
       "contact-email",
       "contact-text",
@@ -82,6 +84,7 @@
       "hero-subtitle",
       "hero-subtitle-en",
       "hero-title",
+      "highlight",
       "mobile-menu-btn",
       "page-content",
       "page-header",
@@ -121,6 +124,8 @@
       "section-label",
       "section-title",
       "single-content",
+      "single-header",
+      "single-title",
       "site-footer",
       "site-header",
       "skill-tag",
@@ -142,7 +147,9 @@
       "为什么开始",
       "写给自己",
       "我的学习路线",
-      "我的项目计划"
+      "我的项目计划",
+      "概述",
+      "正文"
     ]
   }
 }

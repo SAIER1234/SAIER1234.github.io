@@ -1,7 +1,11 @@
 # Site Configuration
 name: "SAIER"
-tagline: "CS Student @ ZJU"
-taglineZh: "浙江大学 · 计算机科学"
+tagline: "Those times when you get up early and you work hard; 
+those times when you stay up late and you work hard; 
+those times when you don’t feel like working,
+ you’re too tired, you don’t want to push yourself, 
+ you’rebut you do it anyway — that is actually the dream."
+taglineZh: "有人爱我就有人恨我"
 bio_short: "Building & learning, one project at a time."
 bio_short_zh: "一步一步构建，一步一步学习。"
 github: "https://github.com/SAIER1234"

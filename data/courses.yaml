@@ -7,7 +7,7 @@ courses:
     school_zh: "麻省理工学院"
     description: "Master the tools: shell, Vim, Git, SSH, debugging, profiling, and more."
     description_zh: "掌握开发工具：Shell、Vim、Git、SSH、调试、性能分析等。"
-    status: "planning"
+    status: "in-progress"
     url: "https://missing.csail.mit.edu/"
     days: 3
     phase: "基础工具"
